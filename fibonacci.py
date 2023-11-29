@@ -25,6 +25,26 @@ def fibonacci(n):
     return sequence_number
 
 
+def fibonacci_doubled(n):
+    def fibonacci_double(n):
+        if n == 0:
+            return 0, 1
+        previous_result = fibonacci_double(n - 1)
+        return previous_result[1], previous_result[0] + previous_result[1]
+
+    return fibonacci_double(n)[0]
+
+
+def fibonacci_without_recursion(n):
+    previous = 1
+    before_that = 0
+    for i in range(n):
+        next_value = previous + before_that
+        before_that = previous
+        previous = next_value
+    return before_that
+
+
 if __name__ == '__main__':
-    result = fibonacci(40)
+    result = fibonacci_without_recursion(40)
     print(result)
