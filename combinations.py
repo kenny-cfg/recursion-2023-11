@@ -19,5 +19,12 @@ NB: we cannot use itertools product or permutations functions.
 """
 
 
-def combinations(characters, length):
-    pass
+def combinations(characters, length: int):
+    if length == 0:
+        return {''}
+    smaller_combinations = combinations(characters, length - 1)
+    return {
+        character + combination
+        for character in characters
+        for combination in smaller_combinations
+    }
