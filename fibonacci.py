@@ -11,7 +11,7 @@
 memo_fibonacci = []
 
 
-def fibonacci(n):
+def fibonacci(n: int) -> int:
     if len(memo_fibonacci) > n:
         return memo_fibonacci[n]
     if n == 0:
@@ -25,11 +25,11 @@ def fibonacci(n):
     return sequence_number
 
 
-def fibonacci_doubled(n):
-    def fibonacci_double(n):
-        if n == 0:
+def fibonacci_doubled(n: int) -> int:
+    def fibonacci_double(number: int) -> tuple[int, int]:
+        if number == 0:
             return 0, 1
-        previous_result = fibonacci_double(n - 1)
+        previous_result = fibonacci_double(number - 1)
         return previous_result[1], previous_result[0] + previous_result[1]
 
     return fibonacci_double(n)[0]
