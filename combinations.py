@@ -17,9 +17,10 @@ bbb
 
 NB: we cannot use itertools product or permutations functions.
 """
+from typing import Set
 
 
-def combinations(characters, length: int):
+def combinations(characters: Set[str], length: int) -> Set[str]:
     if length == 0:
         return {''}
     smaller_combinations = combinations(characters, length - 1)
@@ -28,3 +29,8 @@ def combinations(characters, length: int):
         for character in characters
         for combination in smaller_combinations
     }
+
+
+if __name__ == '__main__':
+    result = combinations({'a', 'b', 'c'}, 5)
+    print(result)
